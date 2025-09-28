@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+FaceFlow
 
-## Getting Started
+FaceFlow is a real-time video calling web application built with Next.js, React, and Tailwind CSS. It allows users to connect with each other via video and chat seamlessly.
 
-First, run the development server:
+Features
 
-```bash
+Real-time video calls using WebRTC/Socket.io (or your signaling method).
+
+Responsive UI built with Tailwind CSS.
+
+Modular architecture with reusable components, context, and providers.
+
+TypeScript support for type safety.
+
+Easily extendable for chat, screen sharing, and other features.
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/IbrahimLoveForJS/FaceFlow.git
+
+
+Go to the project folder:
+
+cd FaceFlow
+
+
+Install dependencies:
+
+npm install
+# or
+yarn
+
+
+Start the development server:
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app will run at http://localhost:3000
+.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Folder Structure
+FaceFlow/
+├─ app/            # Next.js pages and layouts
+├─ components/     # Reusable React components
+├─ context/        # React context providers
+├─ lib/            # Utility functions
+├─ providers/      # App-level providers
+├─ public/         # Static assets (images, icons, etc.)
+├─ types/          # TypeScript types
+├─ tailwind.config.js
+├─ postcss.config.js
+└─ package.json
 
-## Learn More
+Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Fork the repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a branch: git checkout -b feature-name
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Commit your changes: git commit -m "Add feature"
 
-## Deploy on Vercel
+Push to the branch: git push origin feature-name
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+License
+
+MIT License
+
+If you want, I can also make a short,
