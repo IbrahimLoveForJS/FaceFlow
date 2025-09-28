@@ -4,7 +4,9 @@ import { useUser } from "@clerk/nextjs";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 
-interface iSocketContext {}
+interface iSocketContext {
+  onlineUsers: SocketUser[] | null;
+}
 
 export const SocketContext = createContext<iSocketContext | null>(null);
 
@@ -29,6 +31,16 @@ export function SocketContextProvider({
       newSocket.disconnect();
     };
   }, [user]);
+
+  useEffect(() => {
+    if (user) return;
+    if (!socket) return;
+    // Sign-out happened: disconnect this socket so the server removes the user
+    socket.disconnect();
+    setSocket(null);
+    setOnlineUsers(null);
+    setIsSocketConnected(false);
+  }, [user, socket]);
 
   useEffect(() => {
     if (socket === null) return;
@@ -62,14 +74,18 @@ export function SocketContextProvider({
     const handleGetUsers = (users: SocketUser[]) => {
       setOnlineUsers(users);
     };
-    socket.on("geUsers", handleGetUsers);
+    socket.on("getUser", handleGetUsers);
 
     return () => {
-      socket.off("geUsers", handleGetUsers);
+      socket.off("getUser", handleGetUsers);
     };
   }, [socket, isSocketConnected, user]);
 
-  return <SocketContext.Provider value>{children}</SocketContext.Provider>;
+  return (
+    <SocketContext.Provider value={{ onlineUsers }}>
+      {children}
+    </SocketContext.Provider>
+  );
 }
 
 export function useSocket() {
